@@ -124,19 +124,6 @@ const references = [
   },
 ];
 
-// const smoothScrollToReferences = () => {
-//   const references = document.getElementById("references");
-//   if (references) {
-//     references.scrollIntoView({ behavior: "smooth" });
-//   }
-// };
-
-// const YourPage = () => {
-//   useEffect(() => {
-//     smoothScrollToReferences();
-//   }, []);
-// };
-
 export default function Home() {
   return (
     <main className="mb-12 mx-0  xl:mx-64">
@@ -678,7 +665,14 @@ export default function Home() {
           </div>
           <h2 className="flex font-semibold justify-center text-gray-300">
             {" "}
-            Created by Andrew Sodeinde, 2024, For Ethical Hacking.{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/andxrew/xss-eh"
+              className=""
+            >
+              Created by Andrew Sodeinde, 2024, For Ethical Hacking.{" "}
+            </a>
           </h2>
         </div>
       </div>

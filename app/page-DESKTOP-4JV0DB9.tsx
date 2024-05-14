@@ -1,6 +1,4 @@
-"use client";
 import Image from "next/image";
-import { useEffect } from "react";
 
 import {
   Card,
@@ -18,110 +16,19 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Separator } from "@/components/ui/separator";
 
 //References
 //[1] "The end user’s browser has no way to know that the script should not be trusted, and will execute the script." https://owasp.org/www-community/attacks/xss/ Author: KirstenS
+//[5] "input validation is critical in any production grade software." https://www.linkedin.com/pulse/xss-prevention-using-input-validation-neeraj-malhotra/ XSS Prevention using Input Validation Author:Neeraj Malhotra Accessed 27/03/2024
 //[2] "This involves an application 'reflecting' malicious code via a HTTP request" https://brightsec.com/blog/xss/#reflected-xss Author: Admir Dizdar
 //[3] "The most popular objects from this perspective are document.url, document.location, and document.referrer." https://www.acunetix.com/blog/articles/dom-xss-explained/ Author: Tomasz Andrezej Nidecki, Accessed 27/03/2024
 //[4] "Change the contents of the web page through DOM manipulation" https://learn.microsoft.com/en-us/aspnet/core/security/cross-site-scripting?view=aspnetcore-8.0 Prevent Cross-Site Scripting (XSS) in ASP.NET Core Author: Rick Anderson Accessed 27/03/2024
-//[5] "input validation is critical in any production grade software." https://www.linkedin.com/pulse/xss-prevention-using-input-validation-neeraj-malhotra/ XSS Prevention using Input Validation Author:Neeraj Malhotra Accessed 27/03/2024
 //[6] " attackers modifified the script to send customer data to a amalciious server which hosted a fake SSL certificate." https://brightsec.com/blog/xss-attack/#real-life-examples Accessed 10/04/2024
 //[7] "used to access other accounts outside eBay such as Paypal, Bank Accounts and Social Media platforms." https://www.eecs.yorku.ca/course_archive/2015-16/W/3482/Team12_eBayHacks.pdf Accessed 10/04/2024
-//[8] "manual penetration testing or professional DAST " https://www.invicti.com/learn/dom-based-cross-site-scripting-dom-xss/ Accessed 20/04/2024
-//[9] https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded Accessed 13/05/2024
-
-const references = [
-  //1
-  {
-    author: "S. Kirsten",
-    year: "",
-    title: "Cross Site Scripting (XSS)",
-    url: "https://owasp.org/www-community/attacks/xss/",
-    accessed: "27/03/2024",
-  },
-  //2
-  {
-    author: "A. Dizdar",
-    year: "2022",
-    title: "What is XSS? Impact, Types and Prevention",
-    url: "https://brightsec.com/blog/xss/#reflected-xss",
-    accessed: "27/03/2024",
-  },
-  //3
-  {
-    author: "T. Nidecki",
-    year: "2019",
-    title: "DOM XSS: An Explanation of DOM-based Cross-site Scripting",
-    url: "https://www.acunetix.com/blog/articles/dom-xss-explained/",
-    accessed: "27/03/2024",
-  },
-  //4
-  {
-    author: "R. Anderson",
-    year: "2023",
-    title: "Prevent Cross-Site Scripting (XSS) in ASP.NET Core",
-    url: "https://learn.microsoft.com/en-us/aspnet/core/security/cross-site-scripting?view=aspnetcore-8.0",
-    accessed: "27/03/2024",
-  },
-  //5
-  {
-    author: "N. Malhotra",
-    year: "2016",
-    title: "XSS Prevention using Input Validation",
-    url: "https://www.linkedin.com/pulse/xss-prevention-using-input-validation-neeraj-malhotra/",
-    accessed: "27/03/2024",
-  },
-  //6
-  {
-    author: "O. Moradov",
-    year: "2022",
-    title: "XSS Attack: 3 Real Life Attacks and Code Examples",
-    url: "https://brightsec.com/blog/xss-attack/#real-life-examples",
-    accessed: "10/04/2024",
-  },
-  //7
-  {
-    author: "J. Sidhu, R. Sakhuja, D. Zhou",
-    year: "",
-    title: "Attacks on Ebay",
-    url: "https://www.eecs.yorku.ca/course_archive/2015-16/W/3482/Team12_eBayHacks.pdf",
-    accessed: "10/04/2024",
-  },
-  //8
-  {
-    author: "P. Anwar",
-    year: "",
-    title: "DOM-based cross-site scripting",
-    url: "https://www.invicti.com/learn/dom-based-cross-site-scripting-dom-xss/",
-    accessed: "20/04/2024",
-  },
-  //9
-  {
-    author: "Portswigger",
-    year: "",
-    title: "Lab: Reflected XSS into HTML context with nothing encoded",
-    url: "https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded",
-    accessed: "13/05/2024",
-  },
-];
-
-// const smoothScrollToReferences = () => {
-//   const references = document.getElementById("references");
-//   if (references) {
-//     references.scrollIntoView({ behavior: "smooth" });
-//   }
-// };
-
-// const YourPage = () => {
-//   useEffect(() => {
-//     smoothScrollToReferences();
-//   }, []);
-// };
 
 export default function Home() {
   return (
-    <main className="mb-12 mx-0  xl:mx-64">
+    <main className="mb-12 mx-0 xl:mx-36">
       {/* Heading */}
       <div>
         <h1 className="flex text-4xl font-bold justify-center mt-12">
@@ -134,12 +41,12 @@ export default function Home() {
         </h2>
       </div>
       {/* What is XSS? */}
-      <div className="mt-6 mx-12">
+      <div className="mt-24 mx-12">
         <h2 className="flex text-2xl font-semibold justify-center">
           {" "}
           What is XSS?{" "}
         </h2>
-        <div className="text-lg xl:text-xl">
+        <div className="text-lg">
           XSS stands for
           <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">
             {" "}
@@ -153,12 +60,7 @@ export default function Home() {
           vulnerability is quite dangerous as the end user’s browser has no way
           to know that the script should not be trusted, and will execute the
           script
-          <span className="text-gray-600 font-bold">
-            {" "}
-            <a href="#references" className="underline">
-              [1]
-            </a>
-          </span>
+          <span className="text-gray-600 font-bold"> [1]</span>
           . XSS can have serious consequences. Attackers can use this method to
           steal session cookies and effectively steal identities of the user. It
           can also be used to deface pages on the web, spread malicious programs
@@ -170,17 +72,12 @@ export default function Home() {
             <h2 className="flex text-2xl font-semibold justify-center">
               The Most Common Causes
             </h2>
-            <div className="text-lg xl:text-xl">
+            <div className="text-lg">
               Input validation is critical in any production grade software.
-              <span className="text-gray-600 font-bold">
-                {" "}
-                <a href="#references" className="underline">
-                  [5]
-                </a>
-              </span>{" "}
-              There are many ways for malicious users to utilise XSS, especially
-              with the different types of XSS that are at their disposal. One of
-              the most common ways is
+              <span className="text-gray-600 font-bold">[5]</span> There are
+              many ways for malicious users to utilise XSS, especially with the
+              different types of XSS that are at their disposal. One of the most
+              common ways is
               <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-700 to-lime-500">
                 {" "}
                 Improper Input Validation
@@ -263,17 +160,11 @@ export default function Home() {
           <div className="mt-2">
             Reflected XSS is one of the simplest forms of cross site scripting.
             This involves an application 'reflecting' malicious code via a HTTP
-            request{" "}
-            <span className="text-gray-600 font-bold">
-              {" "}
-              <a href="#references" className="underline">
-                [2]
-              </a>
-            </span>
-            . In doing this the attackers don't send the malicious payload to
-            the web application itself, however they send it to the victim via a
-            URL that includes the payload, which is often deliberately made to
-            be glanced over by the victim.
+            request <span className="text-gray-600 font-bold"> [2]</span>. In
+            doing this the attackers don't send the malicious payload to the web
+            application itself, however they send it to the victim via a URL
+            that includes the payload, which is often deliberately made to be
+            glanced over by the victim.
             <span className="font-bold text-gray-600"> EG.</span>
             <Card className="">
               <CardContent className="flex justify-center items-center py-2 text-center">
@@ -323,22 +214,12 @@ export default function Home() {
             javascript - which is extremely common nowadays. The attack payload
             is used by changing the contents of the web page via DOM (Document
             Object Model) environment manipulation{" "}
-            <span className="text-gray-600 font-bold">
-              {" "}
-              <a href="#references" className="underline">
-                [4]
-              </a>
-            </span>
-            , in the victims broswer. This attack usually involves the failure
-            of legitimate javascript on the page able to sanitize user inputs.
-            The most popular objects from this type of attack are document.url,
+            <span className="text-gray-600 font-bold"> [4]</span>, in the
+            victims broswer. This attack usually involves the failure of
+            legitimate javascript on the page able to sanitize user inputs. The
+            most popular objects from this type of attack are document.url,
             document.location, and document.referrer.{" "}
-            <span className="text-gray-600 font-bold">
-              {" "}
-              <a href="#references" className="underline">
-                [3]
-              </a>
-            </span>
+            <span className="text-gray-600 font-bold"> [3]</span>
           </div>
           <Card>
             <CardHeader>
@@ -414,12 +295,9 @@ export default function Home() {
               vulnerability in JavaScript via a library named Feedify. According
               to a brightsec blog, attackers modifified the script to send
               customer data to a amalciious server which hosted a fake SSL
-              certificate.{" "}
-              <span className="text-gray-600 font-bold">
+              certificate. <span className="text-gray-600 font-bold">
                 {" "}
-                <a href="#references" className="underline">
-                  [6]
-                </a>
+                [6]
               </span>{" "}
               This in turn fooled users into believing their purchases were
               secure, when in reality the group perfoemed credit card skimming
@@ -446,212 +324,21 @@ export default function Home() {
               passwords and other info. This info gathered initially was then
               used to access other accounts outside eBay such as Paypal, Bank
               Accounts and Social Media platforms.{" "}
-              <span className="text-gray-600 font-bold">
-                {" "}
-                <a href="#references" className="underline">
-                  [7]
-                </a>
-              </span>
+              <span className="text-gray-600 font-bold"> [7]</span>
             </div>
           </div>
-          {/* Testing */}
+          {/* Prevention */}
           <div className="mt-8">
             <h2 className="flex text-2xl font-semibold justify-center">
               {" "}
-              How to test for it{" "}
+              Prevention Measures{" "}
             </h2>
             <div>
-              Testing for XSS can sometimes be very simple, even more so via
-              specialist software such as{" "}
-              <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-indigo-500">
-                Burp Suite
-              </span>
-              . In Reflected XSS a great start is by checking URLs and seeing if
-              there are any parameters that users can exploit is an excellent
-              start. Usually parameters like this come after symbols{" "}
-              <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-indigo-500">
-                ?
-              </span>{" "}
-              and{" "}
-              <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-indigo-500">
-                &
-              </span>
-              . If any of these parameters have a significant effect on the
-              webpage at hand and its functionality, this is a{" "}
-              <span className="font-bold bg-clip-text text-transparent bg-gradient-to-l from-amber-400 to-amber-500">
-                gold mine
-              </span>{" "}
-              for malicious users. Similarly with stored xss testing every input
-              field with a unique payload is a good way to see if external
-              Javascript can be executed - a simple way could be using the
-              console such as{" "}
-              <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-indigo-500">{`<script>console.log("xss vulnerable")</script>`}</span>{" "}
-              which would show a line in the console which shows it may be
-              vulnerable. Using this method we can identify cracks in the code
-              and remedy them quickly.
-              <br />
-              <br />
-              For DOM based xss, manual penetration tetsting or professional
-              DAST scanners
-              <span className="text-gray-600 font-bold">
-                {" "}
-                <a href="#references" className="underline">
-                  [8]{" "}
-                </a>
-              </span>
-              are believed to be the most effective way to detect this type of
-              XSS attack as the majority of web based security tools fail to
-              test for it. Again using devloper tools and going through each
-              individual source and inputting payloads to see if they are secure
-              or not.
+              There are many ways to prevent XSS attacks from occuring, some of
+              which we have already covered. However, theres no harm in
+              reiterating these points.
             </div>
           </div>
-        </div>
-        {/* Example */}
-        <div className="mt-8">
-          <h2 className="flex text-2xl font-semibold justify-center">
-            {" "}
-            Example{" "}
-          </h2>
-          <div className="text-lg xl:text-xl">
-            Here i will be showing a step-by-step guide on how to test for
-            <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-200">
-              {" "}
-              REFLECTED{" "}
-            </span>{" "}
-            <span className="font-bold bg-clip-text text-transparent bg-gradient-to-l from-blue-600 to-indigo-200">
-              {" "}
-              XSS{" "}
-            </span>{" "}
-            manually using Burp Suite. Burp Suite can do this via the scanner
-            tool but to give a proper demonstration i will do this via the burp
-            repeater tool to show how sites can be exploited by malicious users.
-            <br />
-            <br />
-            First of all we will need to do is set up Burp Suite. this is
-            simple, all we need to do her is put the URL of our site we want to
-            test into Burp Suite. Here i am using a semi-realistic website that
-            is meant to be exploited courtesy of Portswigger{" "}
-            <span className="text-gray-600 font-bold">
-              {" "}
-              <a href="#references" className="underline">
-                [9]
-              </a>
-            </span>
-            .
-            <br />
-            <Image
-              src="/dashboard 2.png"
-              width={4000}
-              height={1000}
-              quality={100}
-              alt="Dashboard Burp"
-              className="w-full rounded-xl shadow-lg"
-            />
-            <br />
-            <br />
-            Now we have to identify a point of entry in the website that allows
-            for code to be reflected or displayed immediately, after a request
-            is fulfilled, i started off with the search box for example. <br />
-            <Image
-              src="/Identify Reflected.png"
-              width={5000}
-              height={100}
-              quality={100}
-              alt="Burp Proxy"
-              className="w-full rounded-xl shadow-lg"
-            />
-            <br />
-            <Image
-              src="/testing1.png"
-              width={4000}
-              height={100}
-              quality={100}
-              alt="Search"
-              className="w-full rounded-xl shadow-lg"
-            />
-            <br />
-            <br />
-            After we have identified a reflected input, we then send it to the
-            Burp Repeater for further analysis. Here we can see where in the
-            code this occurs and then exploit it for our use. Here we send
-            another request so we can pin point where abouts in the code this
-            occurs.
-            <br />
-            <Image
-              src="/H1.png"
-              width={4000}
-              height={100}
-              quality={100}
-              alt="IDENTIFY H1"
-              className="w-full rounded-xl shadow-lg"
-            />
-            <br />
-            <br />
-            Now we know exactly where to send our payload, we can now input
-            malicious code there, we can use a simple alert for example.
-            <br />
-            <Image
-              src="/YBH BURP.png"
-              width={5000}
-              height={1000}
-              quality={100}
-              alt="Burp YBH"
-              className="w-full rounded-xl shadow-lg"
-            />
-            <br />
-            <br />
-            And now if we open up the browser the alert is shown, also being
-            reflected in the URL.
-            <br />
-            <Image
-              src="/YBH 2.png"
-              width={5000}
-              height={1000}
-              quality={100}
-              alt="YBH"
-              className="w-full rounded-xl shadow-lg"
-            />
-            Now if this site was live, widespread and public with many active
-            users, all it takes is this simple h1 tag for a real exploiter to
-            cause serious harm. This shows how XSS can be extremely dangerous
-            for companies and website owners alike..
-            <br />
-            <br />
-          </div>
-        </div>
-        <Separator className=" flex justify-center" />
-        {/* REFERENCES & CREDITS */}
-        <div id="references" className="mt-8 ">
-          <h2 className="flex text-2xl font-semibold justify-center">
-            {" "}
-            References{" "}
-          </h2>
-          <div className="text-md xl:text-lg">
-            <br />
-            {references.map((reference, index) => (
-              <div key={index}>
-                {index + 1}. {reference.author}
-                {reference.year && ` (${reference.year})`}, '{reference.title}',
-                <a
-                  href={reference.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold underline"
-                >
-                  {" "}
-                  {reference.url}
-                </a>{" "}
-                - Accessed {reference.accessed}
-                <br />
-                <br />
-              </div>
-            ))}
-          </div>
-          <h2 className="flex font-semibold justify-center text-gray-300">
-            {" "}
-            Created by Andrew Sodeinde, 2024, For Ethical Hacking.{" "}
-          </h2>
         </div>
       </div>
     </main>

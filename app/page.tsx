@@ -105,6 +105,23 @@ const references = [
     url: "https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded",
     accessed: "13/05/2024",
   },
+  //10
+  {
+    author: "S. Norberg",
+    year: "2020",
+    title:
+      "Advanced ASP.NET Core 3 Security : understanding hacks, attacks, and vulnerabilities to secure your website",
+    url: "https://learning.oreilly.com/library/view/advanced-asp-net-core/9781484260142/?sso_link=yes&sso_link_from=manchester-metropolitan-university  (eBook)",
+    accessed: "13/05/2024",
+  },
+  //11
+  {
+    author: "M. Alsaffar, et al.",
+    year: "2022",
+    title: "Detection of Web Cross-Site Scripting (XSS) Attacks",
+    url: "https://libkey.io/libraries/2845/articles/530896993/full-text-file  (eBook)",
+    accessed: "13/05/2024",
+  },
 ];
 
 // const smoothScrollToReferences = () => {
@@ -616,7 +633,17 @@ export default function Home() {
             Now if this site was live, widespread and public with many active
             users, all it takes is this simple h1 tag for a real exploiter to
             cause serious harm. This shows how XSS can be extremely dangerous
-            for companies and website owners alike..
+            for companies and website owners alike.
+            <br />
+            There are multiple ways for malicious users to create havoc on the
+            web, injecting arbitray JavaScript into a web page is only one out
+            of the many.
+            <span className="text-gray-600 font-bold">
+              {" "}
+              <a href="#references" className="underline">
+                [10]
+              </a>
+            </span>
             <br />
             <br />
           </div>
